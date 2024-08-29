@@ -10,6 +10,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8020:8080"
+    networks:
+      - wise
+
   wise-ui:
     container_name: wise-ui
     image: wise-ui:latest
@@ -20,3 +23,27 @@ services:
       - wise-api
     ports:
       - "8021:80"
+    networks:
+      - wise
+
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: your_database
+      MYSQL_USER: your_user
+      MYSQL_PASSWORD: your_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - wise
+
+networks:
+  wise:
+    driver: bridge
+
+volumes:
+  mysql_data:
