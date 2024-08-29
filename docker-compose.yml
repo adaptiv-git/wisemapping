@@ -30,9 +30,9 @@ services:
     container_name: mysql
     image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: wisemapping
-      MYSQL_USER: wisemapping
+      MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_USER_PASSWORD}
     ports:
       - "3306:3306"
