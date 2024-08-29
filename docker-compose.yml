@@ -9,7 +9,7 @@ services:
       context: ./wise-api
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8020:8080"
   wise-ui:
     container_name: wise-ui
     image: wise-ui:latest
@@ -19,4 +19,4 @@ services:
     depends_on:
       - wise-api
     ports:
-      - "80:80"
+      - "8021:80"
